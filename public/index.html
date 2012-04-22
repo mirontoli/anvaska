@@ -6,43 +6,33 @@
   <link rel="stylesheet" href="./styles/anvaska.css" type="text/css">
   <script src="./lib/headjs/head.load.min.js"></script>
   <script type="text/javascript">
-    head.js("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js",
-            "./lib/bootstrap/js/bootstrap.min.js", 
-            "http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js",
+    head.js("http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js",
+            "http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.0.2/bootstrap.min.js", 
+            "http://cdnjs.cloudflare.com/ajax/libs/knockout/2.0.0/knockout-min.js",
             "./scripts/anvaska.js");
   </script>
 </head>
 <body>
   <div class="container">
     <header class="hero-unit">
-      <h2>Title</h2>
+      <h2>An vaska!</h2>
+      <h3>Catch the time</h3>
     </header>
     <div class="row">
-      <div class="span8">
-        <section>
-          <h3>Subtitl</h3>
-Aenean nec erat nec sem porta molestie. Donec ullamcorper, nibh vel euismod malesuada, nisl nunc vestibulum ante, vitae ullamcorper elit lacus ut odio. Aenean venenatis faucibus suscipit. Aenean risus ante, vehicula eu aliquet ac, egestas at tellus. Proin tempor purus semper ligula placerat elementum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent eget tincidunt sem. Suspendisse semper mauris at magna fermentum euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut vehicula orci sit amet risus auctor non mollis nulla faucibus. Nulla vel quam lorem. Nunc dignissim vestibulum posuere. Proin tincidunt dolor eget sem auctor vulputate. Phasellus ut elit ac mauris rutrum tempus at ac mauris. Ut id purus sed urna cursus volutpat vitae eget nisl.
-          <h3>Subtitle 2</h3>
-enean nec erat nec sem porta molestie. Donec ullamcorper, nibh vel euismod malesuada, nisl nunc vestibulum ante, vitae ullamcorper elit lacus ut odio. Aenean venenatis faucibus suscipit. Aenean risus ante, vehicula eu aliquet ac, egestas at tellus. Proin tempor purus semper ligula placerat elementum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent eget tincidunt sem. Suspendisse semper mauris at magna fermentum euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut vehicula orci sit amet risus auctor non mollis nulla faucibus. Nulla vel quam lorem. Nunc dignissim vestibulum posuere. Proin tincidunt dolor eget sem auctor vulputate. Phasellus ut elit ac mauris rutrum tempus at ac mauris. Ut id purus sed urna cursus volutpat vitae eget nisl.
-<ul>
-<li><a href="./data/articles.xml">Artiklar som xml</a></li>
-<li><a href="./data/articles.json">Artiklar som json</a></li>
-</ul>
-        </section>
-      </div>
-      <aside class="span4">
-        <form id="secret-form" class="well control-group">
-          <h3>Välj flyg</h3>
-          <select id="departures">
-  <option>*** Välj avreseort ***</option>
-  <option data-file="./data/OSD-destinations.xml">Östersund</option>
-  <option data-file="./data/MMX-destinations.xml">Malmö Sturup</option>
-  <option data-file="./data/KBH-destinations.xml">København Kastrup</option>
-          </select>
-          <select id="destinations" disabled="disabled"></select>
-          <button id="booking" class="btn" type="button">Boka</button>
-        </form>
-      </aside>
+      <section class="span12 well">
+          The input area
+      </section>
+    </div>
+    <div class="row">
+      <section id="list" class="span12 well">
+          <div id="notif">Loading...</div>
+          <div data-bind="foreach: records">
+            <div>
+              <span data-bind="text: project"></span>
+              <span data-bind="text: description"></span>
+            </div>
+          </div>
+      </section>
     </div>
   </div>
 </body>
