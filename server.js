@@ -10,5 +10,15 @@ app.configure(function() {
   app.use(app.router);
   app.use(express.static(path.join(application_root, "public")));
 });
+app.get('/api', function (req, res) {
+  res.send('anvaska API is running');
+});
+app.get('/api/records', function (req, res){
+  res.redirect('/sample.json');
+});
+app.post('/api/records', function (req, res){
+  var record = "";
+  console.log("/api/records POST has been invoked");
+  res.send("hello from post");
+});
 app.listen(process.env.PORT || "8080");
-
