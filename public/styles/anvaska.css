@@ -1,4 +1,15 @@
 @charset "UTF-8";
+html {
+    background: url('http://www.ramlosa.se/img/bg-repeat.jpg');
+    height: 100%;
+}
+body {
+    background: url('http://www.ramlosa.se/img/bg2.jpg') center top no-repeat;
+    height: 100%;
+}
+.container {
+    background: red;
+}
 /* reusable classes */
 .hidden {
     display:none;
@@ -9,5 +20,8 @@
 .anvaska-with-btn {
     padding: 0 !important;
     vertical-align: middle !important;
-    text-align: right !important;
+    text-align: center !important;
+}
+#anvaska-list table {
+    background: #fff;
 }
