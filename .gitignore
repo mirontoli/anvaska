@@ -15,3 +15,4 @@ npm-debug.log
 
 #for my project node_modules not needed
 node_modules/
+*~
