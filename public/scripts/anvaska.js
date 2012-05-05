@@ -1,6 +1,22 @@
 var ko = window.ko;
 
 var anvaska = {};
+anvaska.constants = { apiUrl: "/api/records" };
+anvaska.utils = {
+    ajax: {
+        post: function(url, data, success, error) {
+            success = success || function(result) { };
+            error = error || function(result) { };
+			$.ajax(anvaska.constants.apiUrl, {
+				data: JSON.stringify(data),
+				type: "post", 
+				contentType: "application/json",
+				success: success,
+                error: error
+			});
+        }
+    }
+}
 anvaska.model = {};
 // Class to represent a row in the time records grid
 anvaska.model.TimeRecord = function(data) {
@@ -38,9 +54,14 @@ anvaska.model.RecordsViewModel = function() {
             date: self.newRecordDate(),
             project: self.newRecordProject(),
             description: self.newRecordDescription()
+        };
+        function onSuccess(results) {
+            var record = results[0];
+            console.log(record);
+            self.records.unshift(new anvaska.model.TimeRecord(record));
+            self.cleanForm();
         }
-        self.records.unshift(new anvaska.model.TimeRecord(obj));
-        self.cleanForm();
+        anvaska.utils.ajax.post(anvaska.constants.apiUrl, {records: [obj]}, onSuccess);
     };
     
     //helpers

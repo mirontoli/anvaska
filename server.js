@@ -11,7 +11,7 @@ app.configure(function() {
   app.use(express.static(path.join(application_root, "public")));
 });
 
-var recordProvider = new RecordProvider(process.env.MONGOLAB_URI || "localhost", 21017);
+var recordProvider = new RecordProvider(process.env.MONGOLAB_URI);
 
 //Routes
 app.get('/api', function (req, res) {
@@ -21,9 +21,10 @@ app.get('/api/records', function (req, res){
   res.redirect('/sample.json');
 });
 app.post('/api/records', function (req, res){
-  var record = "";
-  console.log("/api/records POST has been invoked");
-  res.send("hello from post");
+  var records = req.body.records;
+  recordProvider.save(records, function(error, data) {
+     res.send(data);
+  });
 });
 
 app.listen(process.env.PORT || "8080");
