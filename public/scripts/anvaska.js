@@ -75,8 +75,8 @@ anvaska.model.RecordsViewModel = function() {
     $.getJSON("/api/records").done(function(data) {
         var mappedRecords = $.map(data, function(item) {
             var obj = {
-                time: "time2",
-                date: "date2",
+                time: item.time,
+                date: item.date,
                 project: item.project,
                 description: item.description
             }

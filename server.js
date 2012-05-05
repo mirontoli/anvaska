@@ -18,7 +18,9 @@ app.get('/api', function (req, res) {
   res.send('anvaska API is running');
 });
 app.get('/api/records', function (req, res){
-  res.redirect('/sample.json');
+  recordProvider.findAll(function(error, data) {
+     res.send(data);
+  });
 });
 app.post('/api/records', function (req, res){
   var records = req.body.records;
