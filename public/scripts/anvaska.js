@@ -95,13 +95,48 @@ anvaska.model.TimeRecord = function(data) {
     };
 };
 
+anvaska.model.TimeStat = function(data) {
+    var self = this;
+    self.time = ko.observable(data.time);
+    self.project = ko.observable(data.project);
+    self.price = ko.observable(data.price);
+    self.sum = ko.computed(function() {
+       return self.time() * self.price();
+    }, this);
+    
+    //operations
+};
+
 // Overall viewmodel for this screen, along with initial state
 anvaska.model.RecordsViewModel = function() {
     var self = this;
     self.provider = new anvaska.data.TimeRecordProvider(anvaska.options.apiUrl);
 
     self.records = ko.observableArray([]);
-    self.stats = ko.computed(function() {return self.records; }, this);
+    self.price = ko.observable(100);
+    self.stats = ko.computed(function() {
+        var projects = {};
+        var records = self.records();
+        for (var i = 0; i < records.length; i++) {
+           
+           var record = records[i];
+           var project = record.project();
+           var time = parseInt(record.time());
+           projects[project] = projects[project] || 0;
+           projects[project] += time;
+        }
+        var stats = [];
+        for( var project in projects ) {
+           var obj = { 
+				time: projects[project], 
+				project: project
+           };
+           obj.price = self.price();
+           var stat = new anvaska.model.TimeStat(obj);
+           stats.push(stat);
+        }
+		return stats; 
+	}, this);
     
     //Editable data
     self.newRecordTime = ko.observable();
@@ -119,7 +154,6 @@ anvaska.model.RecordsViewModel = function() {
         };
         function onSuccess(results) {
             var record = results[0];
-            console.log(record);
             self.records.unshift(new anvaska.model.TimeRecord(record));
             self.cleanForm();
         }
@@ -138,9 +172,15 @@ anvaska.model.RecordsViewModel = function() {
         self.newRecordProject("");
         self.newRecordDescription("");
     };
+    self.sort = function(left, right, property) {
+        return left[property] > right[property];
+    };
     self.sortRecords = function(left, right) {
-        return left.date > right.date;
-    }
+        return self.sort(left, right, "date");
+    };
+    self.sortRecordsAfterProject = function(left, right) {
+        return self.sort(left, right, "project");
+    };
 
     //load initial tasks
     self.provider.get(undefined, function(records) {

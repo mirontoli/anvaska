@@ -46,16 +46,15 @@
       </table>
     </section>
     <section id="anvaska-stat">
+      <h2>Statistics</h2><input type="text" data-bind="value: price">
       <table class="table table-striped table-bordered">
           <tbody data-bind="foreach: stats">
-            <tr data-bind="event: { mouseover: enableDetails, mouseout: disableDetails }" class="anvaska-record">
+            <tr class="anvaska-record">
               <td data-bind="text: time" class="span2"></td>
-              <td data-bind="text: date" class="span2"></td>
+              <td data-bind="text: price" class="span2"></td>
               <td data-bind="text: project" class="span2"></td>
-              <td data-bind="text: description" class="span6"></td>
-              <td class="span2 anvaska-with-btn">
-                <span data-bind="click: $parent.removeRecord, visible: isMouseover()" class="btn btn-danger btn-mini"><i class="icon-remove"></i> delete</span>
-              </td>
+              <td data-bind="text: sum" class="span6"></td>
+              <td class="span2"></td>
             </tr>
           </tbody>
       </table>
