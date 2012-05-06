@@ -99,7 +99,9 @@ anvaska.model.TimeRecord = function(data) {
 anvaska.model.RecordsViewModel = function() {
     var self = this;
     self.provider = new anvaska.data.TimeRecordProvider(anvaska.options.apiUrl);
+
     self.records = ko.observableArray([]);
+    self.stats = ko.computed(function() {return self.records; }, this);
     
     //Editable data
     self.newRecordTime = ko.observable();
