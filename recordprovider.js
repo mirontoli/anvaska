@@ -65,4 +65,16 @@ RecordProvider.prototype.save = function(records, callback) {
     });
 };
 
+RecordProvider.prototype.deleteById = function(id, callback) {
+    this.getCollection(function(error, record_collection) {
+      if( error ) callback(error)
+      else {
+        record_collection.remove({_id: record_collection.db.bson_serializer.ObjectID.createFromHexString(id)}, function(error, result) {
+          if( error ) callback(error)
+          else callback(null, result)
+        });
+      }
+    });
+};
+
 exports.RecordProvider = RecordProvider;
