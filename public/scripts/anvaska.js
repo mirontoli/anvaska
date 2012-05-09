@@ -137,6 +137,22 @@ anvaska.model.RecordsViewModel = function() {
         }
 		return stats; 
 	}, this);
+    self.statsTotalHours = ko.computed(function(){
+           var stats = self.stats();
+           var hours = 0;
+           for(var i in stats) {
+               hours += stats[i].time();
+           }
+           return hours;
+    }, this);
+    self.statsTotalSum = ko.computed(function(){
+           var stats = self.stats();
+           var hours = 0;
+           for(var i in stats) {
+               hours += stats[i].sum();
+           }
+           return hours;
+    }, this);
     
     //Editable data
     self.newRecordTime = ko.observable();
