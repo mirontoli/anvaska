@@ -4,14 +4,17 @@
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="./styles/anvaska.css" type="text/css">
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/themes/blitzer/jquery-ui.css" type="text/css">
   <script src="./lib/headjs/head.load.min.js"></script>
   <script type="text/javascript">
     head.js("http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js",
             "http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.0.2/bootstrap.min.js", 
             "http://cdnjs.cloudflare.com/ajax/libs/knockout/2.0.0/knockout-min.js",
-            "./scripts/anvaska.js",
-"./lib/moment/moment.min.js",
-"./lib/moment/lang-all.min.js");
+            "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js",
+            "./lib/moment/moment.min.js",
+            "./lib/moment/lang-all.min.js",
+            "./scripts/anvaska.js"
+);
   </script>
 </head>
 <body>
@@ -22,12 +25,12 @@
     </header>
     <form id="anvaska-record-form" data-bind="submit: addRecord" class="well form-inline">
       <label class="text">
-        <input data-bind="value: newRecordTime" type="number" step="0.5" class="input-small" placeholder="time"> h
+        <input data-bind="value: newRecordTime" type="number" step="0.5" class="input-small" placeholder="time"> hours
       </label>
-      <input data-bind="value: newRecordDate" type="text" class="input-small" placeholder="date">
-      <input data-bind="value: newRecordProject" type="text" class="input-small" placeholder="project">
+      <input data-bind="value: newRecordDate" id="anvaska-date-input" type="text" class="span2" placeholder="date">
+      <input data-bind="value: newRecordProject" type="text" class="" placeholder="project">
       <textarea data-bind="value: newRecordDescription" type="text" class="input-xlarge" placeholder="description" rows="0" cols="5"></textarea>
-      <button type="submit" class="btn">Go</button>
+      <button type="submit" class="btn btn-primary">&nbsp;Go&nbsp;</button>
     </form>
     <section id="anvaska-list" class="well">
       <div id="notif">Loading...</div>

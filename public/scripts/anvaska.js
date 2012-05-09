@@ -194,3 +194,26 @@ anvaska.model.RecordsViewModel = function() {
 };
 
 ko.applyBindings(new anvaska.model.RecordsViewModel());
+
+
+
+
+
+
+/* Datepicker */
+
+anvaska.ui = {};
+anvaska.ui.initDate = function() {
+   $("#anvaska-date-input").datepicker({ dateFormat: 'yy-mm-dd' });
+};
+anvaska.ui.init = function() {
+   anvaska.ui.initDate();
+};
+$(document).on({
+   ready: anvaska.ui.init
+});
+
+
+
+
+
