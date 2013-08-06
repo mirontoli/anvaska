@@ -23,7 +23,8 @@ app.get('/api/records', function (req, res){
   });
 });
 app.post('/', function(req, res) {
-    res.redirect("/");
+    res.redirect("/blog");
+    
 });
 app.post('/api/records', function (req, res){
   var records = req.body.records;
