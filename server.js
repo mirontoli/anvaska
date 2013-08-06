@@ -6,7 +6,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT || "8080");
 */
 
-
+/*
 var express = require('express');
 var app = express();
 
@@ -15,20 +15,28 @@ app.get('/', function(req, res){
 });
 
 app.listen(process.env.PORT || "8080");
+*/
 
 
+var express = require("express");
+    //, path = require("path")
+    //, RecordProvider = require("./recordprovider").RecordProvider
+
+
+var app = express();
+app.use(express.static(__dirname + '/public'));
+
+app.listen(process.env.PORT || "8080");
 /*
-var application_root = __dirname,
-    express = require("express"),
-    path = require("path"),
-    RecordProvider = require("./recordprovider").RecordProvider;
 
-var app = express.createServer();
+
+
 app.configure(function() {
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
-  app.use(express.static(path.join(application_root, "public")));
+  app.use(express.static(__dirname + '/public'));
+  //app.use(express.static(path.join(application_root, "public")));
 });
 
 var recordProvider = new RecordProvider(process.env.MONGOLAB_URI);
