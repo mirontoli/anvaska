@@ -1,4 +1,10 @@
-this project uses node.js and mongo
+Just a simple time tracking application, for discovering of Mongo and Node.js
+and knockout.js.
+
+The app is published on heroku
+
+- http://anvaska.herokuapp.com
+
 to start on your local machine install mongo db (google for more info):
 
     sudo apt-get install mongodb 

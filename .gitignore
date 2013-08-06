@@ -16,3 +16,6 @@ npm-debug.log
 #for my project node_modules not needed
 node_modules/
 *~
+
+# c9.io IDE revisions
+.c9revisions/
