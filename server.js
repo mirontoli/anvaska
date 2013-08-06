@@ -27,7 +27,7 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.static(__dirname + '/public'));
 app.post('/', function(req, res){
-    res.redirect('/');
+    res.redirect(req.url);
 });
 
 
