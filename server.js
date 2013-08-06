@@ -1,3 +1,11 @@
+var express = require('express');
+var app = express();
+
+app.get('/', function(req, res){
+  res.send('hello world');
+});
+
+/*
 var application_root = __dirname,
     express = require("express"),
     path = require("path"),
@@ -41,3 +49,4 @@ app.delete('/api/records/:id', function (req, res){
 
 app.listen(process.env.PORT || "8080");
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+*/
