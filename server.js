@@ -30,6 +30,7 @@ app.post('/', function(req, res){
 });
 
 app.listen(process.env.PORT || "8080");
+var recordProvider = new RecordProvider(process.env.MONGOLAB_URI);
 /*
 
 
@@ -41,9 +42,9 @@ app.configure(function() {
   app.use(express.static(__dirname + '/public'));
   //app.use(express.static(path.join(application_root, "public")));
 });
+*/
 
-var recordProvider = new RecordProvider(process.env.MONGOLAB_URI);
-
+/*
 //Routes
 app.get('/api', function (req, res) {
   res.send('anvaska API is running');
