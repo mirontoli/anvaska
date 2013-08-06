@@ -46,7 +46,7 @@ app.delete('/api/records/:id', function (req, res){
      res.send(result);
   });  
 })
-
+*/
 app.listen(process.env.PORT || "8080");
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
-*/
+
