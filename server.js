@@ -1,3 +1,11 @@
+var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
+}).listen(process.env.PORT || "8080");
+
+
+
 var express = require('express');
 var app = express();
 
@@ -46,7 +54,7 @@ app.delete('/api/records/:id', function (req, res){
      res.send(result);
   });  
 })
-*/
+
 app.listen(process.env.PORT || "8080");
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
-
+*/
