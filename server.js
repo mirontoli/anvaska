@@ -22,6 +22,9 @@ app.get('/api/records', function (req, res){
      res.send(data);
   });
 });
+app.post('/', function(req, res) {
+    res.redirect("/");
+});
 app.post('/api/records', function (req, res){
   var records = req.body.records;
   recordProvider.save(records, function(error, data) {
