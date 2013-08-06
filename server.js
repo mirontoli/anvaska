@@ -18,9 +18,9 @@ app.listen(process.env.PORT || "8080");
 */
 
 
-var express = require("express");
+var express = require("express")
     //, path = require("path")
-    //, RecordProvider = require("./recordprovider").RecordProvider
+    , RecordProvider = require("./recordprovider").RecordProvider;
 
 
 var app = express();
