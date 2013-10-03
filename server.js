@@ -26,9 +26,6 @@ var app = express();
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.static(__dirname + '/public'));
-app.post('/', function(req, res){
-    res.redirect(req.url);
-});
 
 
 var recordProvider = new RecordProvider(process.env.MONGOLAB_URI);
