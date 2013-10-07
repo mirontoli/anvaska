@@ -223,7 +223,6 @@ anvaska.ui.initDate = function() {
    $("#anvaska-date-input").datepicker({ dateFormat: 'yy-mm-dd' });
 };
 anvaska.ui.init = function() {
-    return;
    anvaska.ui.initDate();
 };
 $(document).on({
