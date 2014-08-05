@@ -19,3 +19,5 @@ node_modules/
 
 # c9.io IDE revisions
 .c9revisions/
+.c9
+
